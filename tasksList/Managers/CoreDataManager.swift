@@ -53,6 +53,7 @@ class CoreDataManager {
             print(error)
         }
     }
+    
     func completeTask(_ task: ShownTask) {
         guard let task = convertTask(task).first else { return }
         task.isComplete.toggle()

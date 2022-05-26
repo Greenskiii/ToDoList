@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct TasksListView: View {
-    @Environment(\.managedObjectContext) var context
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
@@ -26,6 +25,7 @@ struct TasksListView: View {
                 }
             }
             .padding()
+            
             List {
                 ForEach(viewModel.tasks) { task in
                     TaskRow(task: task, save: viewModel.save(_:))

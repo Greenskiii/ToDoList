@@ -9,13 +9,11 @@ import SwiftUI
 
 @main
 struct tasksListApp: App {
+    let context = CoreDataController.shared.container.viewContext
 
     var body: some Scene {
         WindowGroup {
-            let context = CoreDataController.shared.container.viewContext
-            
             TasksListView(viewModel: ViewModel(context: context))
-                .environment(\.managedObjectContext, context)
         }
     }
 }

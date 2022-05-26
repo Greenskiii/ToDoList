@@ -38,8 +38,4 @@ class ViewModel: NSObject, ObservableObject {
         coreDataManager.completeTask(task)
         self.tasks = coreDataManager.getTasks()
     }
-    
-
 }
-
-
