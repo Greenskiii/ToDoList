@@ -13,6 +13,10 @@ struct TaskRow: View {
     
     var body: some View {
         HStack {
+            Circle()
+                .foregroundColor(task.tag.value)
+                .frame(width: 15, height: 15)
+                .padding(.horizontal, 3)
             VStack {
                 HStack {
                     Text(task.name ?? "No name given")
@@ -25,10 +29,9 @@ struct TaskRow: View {
                             .foregroundColor(.gray)
                         Spacer()
                     }
-                    
                 }
             }
-            Image(systemName: task.isCompleted ?? false ? "checkmark.square" : "square")
+            Image(systemName: task.isCompleted ? "checkmark.square" : "square")
                 .onTapGesture {
                     save(task)
                 }

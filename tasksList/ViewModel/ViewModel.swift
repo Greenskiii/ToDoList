@@ -11,6 +11,7 @@ import CoreData
 class ViewModel: NSObject, ObservableObject {
     @Published var taskName = ""
     @Published var tasks: [ShownTask] = []
+    @Published var taskColor = TaskTag.blue
     var coreDataManager: CoreDataManager
     
     init(context: NSManagedObjectContext) {
@@ -20,7 +21,7 @@ class ViewModel: NSObject, ObservableObject {
     }
     
     func addTask() {
-        coreDataManager.addTask(taskName)
+        coreDataManager.addTask(taskName, tag: taskColor)
         taskName = ""
         self.tasks = coreDataManager.getTasks()
 

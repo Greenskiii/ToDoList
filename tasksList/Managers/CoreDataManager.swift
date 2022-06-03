@@ -23,35 +23,35 @@ class CoreDataManager {
     func getTasks() -> [ShownTask] {
         do {
             var shownTasks: [ShownTask] = []
-            try fetchedResultsController.performFetch()
+            try? fetchedResultsController.performFetch()
             guard let tasks = fetchedResultsController.fetchedObjects else {
                 return []
             }
             for task in tasks {
-                shownTasks.append(ShownTask(name: task.name,
-                                            dateAdded: task.dateAdded,
-                                            isCompleted: task.isComplete,
-                                            id: task.id))
+                if let id = task.id,
+                   let tag = task.tag {
+                    shownTasks.append(
+                        ShownTask(name: task.name,
+                                  dateAdded: task.dateAdded,
+                                  isCompleted: task.isComplete,
+                                  id: id,
+                                  tag: TaskTag(rawValue: tag) ?? .red)
+                    )
+                }
             }
             return shownTasks
         }
-        catch {
-            print(error)
-        }
-        return []
     }
     
-    func addTask(_ name: String) {
+    func addTask(_ name: String, tag: TaskTag) {
         let newTask = Task(context: context)
         newTask.id = UUID()
         newTask.isComplete = false
         newTask.name = name
         newTask.dateAdded = Date()
-        do {
-            try context.save()
-        } catch {
-            print(error)
-        }
+        newTask.tag = tag.rawValue
+        try? context.save()
+        
     }
     
     func completeTask(_ task: ShownTask) {
@@ -67,10 +67,8 @@ class CoreDataManager {
     }
     
     func convertTask(_ task: ShownTask) -> [Task] {
-        guard let id = task.id else { return [] }
         let fetchRequest = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K = %@", "id", id as NSUUID)
-//        fetchRequest.includesPropertyValues = false
+        fetchRequest.predicate = NSPredicate(format: "%K = %@", "id", task.id as NSUUID)
         let objects = try? context.fetch(fetchRequest)
         var tasks: [Task] = []
         for object in objects ?? [] {

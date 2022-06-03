@@ -18,14 +18,30 @@ struct TasksListView: View {
                 TextField("Write your task",
                           text: $viewModel.taskName)
                 .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
                 Button {
                     viewModel.addTask()
                 } label: {
                     Text("Add Task")
                 }
+                Circle()
+                    .frame(width: 20, height: 20)
+                    .padding(1)
+//                    .foregroundColor(Color("red"))
+                    .foregroundColor(viewModel.taskColor.value)
+                    .contextMenu {
+                        ForEach(TaskTag.allCases) { tag in
+                            Button {
+                                viewModel.taskColor = tag
+                            } label: {
+                                Text(tag.rawValue)
+                                
+                                    
+                            }
+                        }
+                    }
+                    .padding()
             }
-            .padding()
-            
             List {
                 ForEach(viewModel.tasks) { task in
                     TaskRow(task: task, save: viewModel.save(_:))
@@ -36,10 +52,11 @@ struct TasksListView: View {
     }
 }
 
+
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
         let context = CoreDataController.shared.container.viewContext
-
+        
         TasksListView(viewModel: ViewModel(context: context))
     }
 }
