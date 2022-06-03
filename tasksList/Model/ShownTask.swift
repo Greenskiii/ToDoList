@@ -9,7 +9,7 @@ import Foundation
 
 struct ShownTask: Identifiable {
     var name: String?
-    var dateAdded: Date?
+    var dateAdded: String?
     var isCompleted: Bool = false
     var id: UUID
     var tag: TaskTag

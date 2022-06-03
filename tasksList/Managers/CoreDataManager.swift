@@ -11,6 +11,8 @@ import CoreData
 class CoreDataManager {
     var context: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<Task>
+    let dateFormatter = DateFormatter()
+    
     
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -18,6 +20,7 @@ class CoreDataManager {
                                                               managedObjectContext: context,
                                                               sectionNameKeyPath: nil,
                                                               cacheName: nil)
+        dateFormatter.dateFormat = "YY, MMM d, hh:mm"
     }
     
     func getTasks() -> [ShownTask] {
@@ -29,10 +32,11 @@ class CoreDataManager {
             }
             for task in tasks {
                 if let id = task.id,
-                   let tag = task.tag {
+                   let tag = task.tag,
+                   let date = task.dateAdded {
                     shownTasks.append(
                         ShownTask(name: task.name,
-                                  dateAdded: task.dateAdded,
+                                  dateAdded: dateFormatter.string(from: date),
                                   isCompleted: task.isComplete,
                                   id: id,
                                   tag: TaskTag(rawValue: tag) ?? .red)

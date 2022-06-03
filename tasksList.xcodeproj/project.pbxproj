@@ -17,7 +17,6 @@
 		B84CCD492829981200E9AC21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CCD482829981200E9AC21 /* CoreDataManager.swift */; };
 		B84CCD4B2829A10600E9AC21 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CCD4A2829A10500E9AC21 /* TaskRow.swift */; };
 		B84CCD4F282A7B9200E9AC21 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CCD4E282A7B9200E9AC21 /* ViewModel.swift */; };
-		B84CCD56282A804200E9AC21 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CCD55282A804200E9AC21 /* DateExtension.swift */; };
 		B84CCD5B282A8A4200E9AC21 /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CCD5A282A8A4200E9AC21 /* TaskExtension.swift */; };
 		B8C62B9B283FA208008858FD /* ShownTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C62B9A283FA208008858FD /* ShownTask.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		B84CCD482829981200E9AC21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B84CCD4A2829A10500E9AC21 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		B84CCD4E282A7B9200E9AC21 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		B84CCD55282A804200E9AC21 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B84CCD5A282A8A4200E9AC21 /* TaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskExtension.swift; sourceTree = "<group>"; };
 		B8C62B9A283FA208008858FD /* ShownTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShownTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +134,6 @@
 		B84CCD54282A802400E9AC21 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B84CCD55282A804200E9AC21 /* DateExtension.swift */,
 				B84CCD5A282A8A4200E9AC21 /* TaskExtension.swift */,
 			);
 			path = Extension;
@@ -222,7 +219,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84CCD4B2829A10600E9AC21 /* TaskRow.swift in Sources */,
-				B84CCD56282A804200E9AC21 /* DateExtension.swift in Sources */,
 				B84CCD422829975600E9AC21 /* tasksList.xcdatamodeld in Sources */,
 				B84CCD492829981200E9AC21 /* CoreDataManager.swift in Sources */,
 				B84CCD382829975400E9AC21 /* TasksListView.swift in Sources */,

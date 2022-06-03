@@ -24,7 +24,7 @@ struct TaskRow: View {
                 }
                 if let date = task.dateAdded {
                     HStack {
-                        Text(date.convert())
+                        Text(date)
                             .font(.system(.caption))
                             .foregroundColor(.gray)
                         Spacer()
